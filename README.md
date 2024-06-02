@@ -94,7 +94,7 @@ The non-linear features relationship is nothing special here:
 ![Random Forest Features](images/p3_final_nl_features.png)
 
 ## ROC Curve and 80% Probability
-Looking at the ***ROC Curve*** and 80% probability, we can reduce ***False Negative*** rate to 0.1% with 58% ***Accuracy***, if we are willing to spend 42% more marketing resources. Picture below shows Improved LR Model Confusion Matrix alongside the ROC Curve:
+Looking at the ***ROC Curve*** and 80% probability, we can reduce ***False Negative*** rate to 0.1% with 58% ***Accuracy***, if we are willing to spend 42% more marketing resources. Picture below shows Improved LR Model Confusion Matrix alongside the ROC Curve before applying the 80% probability:
 
 ![ROC](images/p3_roc.png)
 
