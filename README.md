@@ -4,7 +4,7 @@ The purpose of this project is to compare performance of different machine learn
 The data for this project comes from [UCI Machine Learning repository](https://archive.ics.uci.edu/dataset/222/bank+marketing) for a  Portuguese banking institution and is a collection of the results of multiple marketing campaigns. 
 
 #Jupyter Notebooks
-The accompanied [Jupyter Notebook](data/prompt_III.ipynb) provides the calculations, methodologies, and life-cycle of applying CRISP-DM process to this problem.
+The accompanied [Jupyter Notebook](prompt_III.ipynb) provides the calculations, methodologies, and life-cycle of applying CRISP-DM process to this problem.
 
 # Exploratory Data Analysis and Data Cleaning
 The data from this dataset is very clean with no missing values and only 12 duplicates which were dropped accordingly. It has 41188 rows and 21 columns (11 numerical and 10 categorical). The outcome column is labeled "y" and contained "yes" and "no" values which were converted to 0s and 1s. Other categorical columns have been encoded with ***get_dummies()*** function.
