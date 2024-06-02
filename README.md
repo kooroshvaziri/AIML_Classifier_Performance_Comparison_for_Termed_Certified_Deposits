@@ -99,6 +99,6 @@ Looking at the ***ROC Curve*** and 80% probability, we can reduce ***False Negat
 ![ROC](images/p3_roc.png)
 
 ## Conclusion
-The question here remains for the Subject-Matter-Experts (SME) and business analysis: how much potential customers are we willing to sacrifice to release more marketting resources?
+The question here remains for the Subject-Matter-Experts (SME) and business analysts: how many of the potential customers are we willing to sacrifice to release more marketting resources?
 
 With our final SVM models, we have a ***False Positive*** rate of %17.7 and ***False Negative*** rate of only 0.5%. So we are using almost 20% more resources for marketing campaigns than ideal numbers. Although this can be costly from a business standpoint, a detailed cost-basis analysis is needed to see if it is worth sacrificing more resources or change the model parameters to allow lower ***Recall*** score.
