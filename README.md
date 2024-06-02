@@ -24,13 +24,11 @@ Basic ***LogisticRegression*** model returns 91% accuracy on test and train data
 Comparing it to basic non-hyperparameterized KNN, Decision Tree, SVM, and Random Forest model reveals the following result:
 
 ![Classifiers Comparison](images/p3_classifier_compare.png)
-
+```
 Accuracy of LR:  0.91
-
 Precision of LR:  0.65
-
 Recall of LR:  0.40
-
+```
 High accuracy is only one part of the story, and looking at the confusion matrix reveals that our basic models have low ***Recall*** scores. In this practical business—just like the classic malignant tumor cancer classification problem—our goal is to maximize marketting campaign efforts by signing up more customers for termed CD. If we have a low ***Recall*** score with high ***False Negative*** numbers, it means we are misclassifying some of the prospective customers as insignificant, and no matter how high our accuracy is, we are losing these businesses. So on the next iteration, ***GridSearchCV*** is used to find an optimal model to increase the ***Recal*** score.
 
 ![Basic Models Confusion Matrix](images/p3_basic_cm.png)
@@ -48,24 +46,25 @@ Also, by looking at Random Forest Classifier, we can look for any non-linear cor
 
 With linear and non-linear important features descibed in previous section, it was apparent that some of the features incomplete values, like "education_uknown" or "default_uknown" or "loan_unknown," have high correlations, so it was decided to drop these columns so we don't introduce unwanted noise to the data.
 
-For the improved models, these columns are dropped from the dataset: job, marital, day_of_week, default, loan, cons.conf.idx, previous, poutcome, previous, education, campaign, and housing. An improved ***Logistic Regression*** model with the hyperparamethers of ***(class_weight='balanced', penalty='l2', fit_intercept=False)*** revealed the following scores and coefficients:
-
+For the improved models, these columns are dropped from the dataset: job, marital, day_of_week, default, loan, cons.conf.idx, previous, poutcome, previous, education, campaign, and housing. An improved ***Logistic Regression*** model with the hyperparamethers of ***(class_weight='balanced', penalty='l2', fit_intercept=False)*** revealed the following scores and coefficients with only 142 cases misclassified as ***False Negative***:
+```
 Accuracy of LR:  0.82
-
 Precision of LR:  0.38
-
 Recall of LR:  0.90
-
+```
 ![Final Features](images/p3_final_features.png)
 
 Here, we have doubled our ***Recall*** score, just by dropping unreleavant columns and adding support for imbalance classes. Improved SVM classifier with hyperparameters of ***(kernel='rbf', class_weight={1: 10})***, gives even better scores and only 67 cases of ***False Negative*** cases: 
-
+```
 Accuracy of SVM:  0.82
-
 Precision of SVM:  0.38
-
 Recall of SVM:  0.95
-
+```
 ## Hyperparameters Tuning (iteration three)
-
+Now that we know SVM returns the best results, using ***GridSearchCV*** we search for best kernel, degree, and class_weights:
+```
+param_dict = {  'kernel': ['linear', 'poly', 'rbf', 'sigmoid'],
+                'class_weight': ['balanced', {1:2}, {1:5}, {1:10}],
+                'degree': [1, 2, 3, 4, 5]  }
+```
 
