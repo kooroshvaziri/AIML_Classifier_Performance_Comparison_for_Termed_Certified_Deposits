@@ -1,10 +1,10 @@
 # ML Classification of Certified Deposit Bank Customers
-The purpose of this project is to compare performance of different machine learning classifiers and build an efficient model to classify bank customers into prospects who would accept opening a CD and those who would not. With this model, the bank can predict the outcome of their marketting campaigns, and focus their resources on customers who are more likely to open a CD.
+The purpose of this project is to compare performance of different machine learning classifiers and build an efficient model to classify bank customers into prospects who would accept opening a CD and those who would not. With this model, the bank can predict the outcome of their marketing campaigns, and focus their resources on customers who are more likely to open a CD.
 
-The data for this project comes from [UCI Machine Learning repository](https://archive.ics.uci.edu/dataset/222/bank+marketing) for a  Portugese banking institution and is a collection of the results of multiple marketing campaigns. 
+The data for this project comes from [UCI Machine Learning repository](https://archive.ics.uci.edu/dataset/222/bank+marketing) for a  Portuguese banking institution and is a collection of the results of multiple marketing campaigns. 
 
 #Jupyter Notebooks
-The accompanied [Jupyter Notebook](data/prompt_III.ipynb) provides the calculations, methodologies, and life-cycle of applying CRISP-DM process to this problen.
+The accompanied [Jupyter Notebook](data/prompt_III.ipynb) provides the calculations, methodologies, and life-cycle of applying CRISP-DM process to this problem.
 
 # Exploratory Data Analysis and Data Cleaning
 The data from this dataset is very clean with no missing values and only 12 duplicates which were dropped accordingly. It has 41188 rows and 21 columns (11 numerical and 10 categorical). The outcome column is labeled "y" and contained "yes" and "no" values which were converted to 0s and 1s. Other categorical columns have been encoded with ***get_dummies()*** function.
@@ -29,7 +29,7 @@ Accuracy of LR:  0.91
 Precision of LR:  0.65
 Recall of LR:  0.40
 ```
-High accuracy is only one part of the story, and looking at the confusion matrix reveals that our basic models have low ***Recall*** scores. In this practical business—just like the classic malignant tumor cancer classification problem—our goal is to maximize marketting campaign efforts by signing up more customers for termed CD. If we have a low ***Recall*** score with high ***False Negative*** numbers, it means we are misclassifying some of the prospective customers as insignificant, and no matter how high our accuracy is, we are losing these businesses. So on the next iteration, ***GridSearchCV*** is used to find an optimal model to increase the ***Recal*** score.
+High accuracy is only one part of the story, and looking at the confusion matrix reveals that our basic models have low ***Recall*** scores. In this practical business—just like the classic malignant tumor cancer classification problem—our goal is to maximize marketing campaign efforts by signing up more customers for termed CD. If we have a low ***Recall*** score with high ***False Negative*** numbers, it means we are misclassifying some of the prospective customers as insignificant, and no matter how high our accuracy is, we are losing these businesses. So on the next iteration, ***GridSearchCV*** is used to find an optimal model to increase the ***Recall*** score.
 
 ![Basic Models Confusion Matrix](images/p3_basic_cm.png)
 
@@ -44,9 +44,9 @@ Also, by looking at Random Forest Classifier, we can look for any non-linear cor
 
 ## Improving Models (iteration two)
 
-With linear and non-linear important features descibed in previous section, it was apparent that some of the features incomplete values, like "education_uknown" or "default_uknown" or "loan_unknown," have high correlations, so it was decided to drop these columns so we don't introduce unwanted noise to the data.
+With linear and non-linear important features described in previous section, it was apparent that some of the features incomplete values, like "education_uknown" or "default_uknown" or "loan_unknown," have high correlations, so it was decided to drop these columns so we don't introduce unwanted noise to the data.
 
-For the improved models, these columns are dropped from the dataset: job, marital, day_of_week, default, loan, cons.conf.idx, previous, poutcome, previous, education, campaign, and housing. An improved ***Logistic Regression*** model with the hyperparamethers of ***(class_weight='balanced', penalty='l2', fit_intercept=False)*** revealed the following scores and coefficients with only 142 cases misclassified as ***False Negative***:
+For the improved models, these columns are dropped from the dataset: job, marital, day_of_week, default, loan, cons.conf.idx, previous, poutcome, previous, education, campaign, and housing. An improved ***Logistic Regression*** model with the hyperparameters of ***(class_weight='balanced', penalty='l2', fit_intercept=False)*** revealed the following scores and coefficients with only 142 cases misclassified as ***False Negative***:
 ```
 Accuracy of LR:  0.82
 Precision of LR:  0.38
@@ -54,7 +54,7 @@ Recall of LR:  0.90
 ```
 ![Final Features](images/p3_final_features.png)
 
-Here, we have doubled our ***Recall*** score, just by dropping unreleavant columns and adding support for imbalance classes. Improved SVM classifier with hyperparameters of ***(kernel='rbf', class_weight={1: 10})***, gives even better scores and only 67 cases of ***False Negative*** cases: 
+Here, we have doubled our ***Recall*** score, just by dropping irrelevant columns and adding support for imbalance classes. Improved SVM classifier with hyperparameters of ***(kernel='rbf', class_weight={1: 10})***, gives even better scores and only 67 cases of ***False Negative*** cases: 
 ```
 Accuracy of SVM:  0.82
 Precision of SVM:  0.38
@@ -94,18 +94,11 @@ The non-linear features relationship is nothing special here:
 ![Random Forest Features](images/p3_final_nl_features.png)
 
 ## ROC Curve and 80% Probability
-Looking at the ***ROC Curve*** and 80% probablity, we can reduce ***False Negative*** rate to 0.1% with 58% ***Accuracy***, if we are willing to spend 42% more marketting resources. Picture below shows Improved LR Model Confusion Matrix alongside the ROC Curve:
+Looking at the ***ROC Curve*** and 80% probability, we can reduce ***False Negative*** rate to 0.1% with 58% ***Accuracy***, if we are willing to spend 42% more marketing resources. Picture below shows Improved LR Model Confusion Matrix alongside the ROC Curve:
 
 ![ROC](images/p3_roc.png)
 
 ## Conclusion
 The question here remains for the Subject-Matter-Experts (SME) and business analysis: how much potential customers are we willing to sacrifice to release more marketting resources?
 
-With our final SVM models, we have a ***False Positive*** rate of %17.7 and ***False Negative*** rate of only 0.5%. So we are using almost 20% more resources for marketting campaings than ideal numbers. Although this can be costly from a business standpoint, a detailed cost-basis analysis is needed to see if it is worth sacrificing more resources or change the model parameters to allow lower ***Recall*** score.
-
-
-
-
-
-
-
+With our final SVM models, we have a ***False Positive*** rate of %17.7 and ***False Negative*** rate of only 0.5%. So we are using almost 20% more resources for marketing campaigns than ideal numbers. Although this can be costly from a business standpoint, a detailed cost-basis analysis is needed to see if it is worth sacrificing more resources or change the model parameters to allow lower ***Recall*** score.
