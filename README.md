@@ -68,3 +68,44 @@ param_dict = {  'kernel': ['linear', 'poly', 'rbf', 'sigmoid'],
                 'degree': [1, 2, 3, 4, 5]  }
 ```
 
+Cross validation search optimized for ***Recall*** score reveals the best SVM model with the following hyperparameters and scores:
+
+![SVM GridSearchCV](images/p3_gridsearchcv.png)
+
+```
+Accuracy of GridSearchCV:  0.82
+Precision of GridSearchCV:  0.38
+Recall of GridSearchCV:  0.95
+```
+
+The scores of GridSearchCV are not any different than the scores of our improved SVM model. The confusion matrix for GridSearchCV is shown on the right-side of the improved models in below picture:
+
+![GridSearchCV Confusion Matrix](images/p3_final_cm.png)
+
+## Looking at Final Non-Linear Features
+Using Random Forest classifier again, we can look into non-linear correlations of our reduced features dataset. Even with the ***calss_weight*** set to ***balanced***, training accuracy of 100%, and test accuracy of 91%, RF still returns a bad ***Recall*** score:
+```
+Accuracy of Improved RF:  0.91
+Recall of Improved RF:  0.51
+Precision of Improved RF:  0.62
+```
+
+The non-linear features relationship is nothing special here:
+![Random Forest Features](images/p3_final_nl_features.png)
+
+## ROC Curve and 80% Probability
+Looking at the ***ROC Curve*** and 80% probablity, we can reduce ***False Negative*** rate to 0.1% with 58% ***Accuracy***, if we are willing to spend 42% more marketting resources. Picture below shows Improved LR Model Confusion Matrix alongside the ROC Curve:
+
+![ROC](images/p3_roc.png)
+
+## Conclusion
+The question here remains for the Subject-Matter-Experts (SME) and business analysis: how much potential customers are we willing to sacrifice to release more marketting resources?
+
+With our final SVM models, we have a ***False Positive*** rate of %17.7 and ***False Negative*** rate of only 0.5%. So we are using almost 20% more resources for marketting campaings than ideal numbers. Although this can be costly from a business standpoint, a detailed cost-basis analysis is needed to see if it is worth sacrificing more resources or change the model parameters to allow lower ***Recall*** score.
+
+
+
+
+
+
+
