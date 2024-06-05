@@ -11,7 +11,7 @@ The data from this dataset is very clean with no missing values and only 12 dupl
 
 ![Imbalance Data](images/p3_outcome_heatmap.png)
 
-Data have been split into train and test set by a 70/30. The data is highly imbalanced with 88.7% rejection and 11.3% acceptance. There is also scaling issue with the columns that was taken care of with ***StandardScaler*** class.
+Data have been split into train and test set by a 70/30 split. The data is highly imbalanced with 88.7% rejection and 11.3% acceptance. There is also scaling issue with the columns that was taken care of with ***StandardScaler*** class.
 
 Performing a correlation heatmap reveals linear correlations between the outcome variable "y" that is positively depended on ***duration*** and ***previous***, and negatively is impacted by ***nr.employed***, ***pdays***, ***emp.var.rate***, ***euribor3m***, and ***cons.price.idx***.
 
