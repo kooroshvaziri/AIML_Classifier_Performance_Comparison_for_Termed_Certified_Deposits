@@ -3,7 +3,7 @@ The purpose of this project is to compare performance of different machine learn
 
 The data for this project comes from [UCI Machine Learning repository](https://archive.ics.uci.edu/dataset/222/bank+marketing) for a  Portuguese banking institution and is a collection of the results of multiple marketing campaigns. 
 
-#Jupyter Notebooks
+# Jupyter Notebooks
 The accompanied [Jupyter Notebook](prompt_III.ipynb) provides the calculations, methodologies, and life-cycle of applying CRISP-DM process to this problem.
 
 # Exploratory Data Analysis and Data Cleaning
